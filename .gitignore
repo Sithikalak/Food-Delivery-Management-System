@@ -1,1 +1,42 @@
+# ===== Build Output =====
+target/
+*.war
+*.class
+
+# ===== IDE Files =====
+.idea/
+*.iml
+*.iws
+*.ipr
+.vscode/
+*.code-workspace
+.project
+.classpath
+.settings/
+nbproject/
+*.swp
+*.swo
+*~
+
+# ===== OS Files =====
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# ===== Maven =====
+pom.xml.tag
+pom.xml.releaseBackup
+pom.xml.versionsBackup
+pom.xml.next
+release.properties
+
+# ===== Archives =====
+*.zip
+*.tar.gz
+*.rar
+
+# ===== Logs =====
+*.log
+
+# ===== Old Front-end folder =====
 /Front-end

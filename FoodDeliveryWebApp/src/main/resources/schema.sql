@@ -51,11 +51,11 @@ CREATE TABLE IF NOT EXISTS orders (
     total_price DECIMAL(10, 2) NOT NULL,
     order_status ENUM('PENDING', 'PREPARING', 'OUT_FOR_DELIVERY', 'DELIVERED', 'CANCELLED') DEFAULT 'PENDING',
     order_type ENUM('INSTANT', 'SCHEDULED') DEFAULT 'INSTANT',
-    delivery_agent_id INT,
+    agent_id INT,
     order_date TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
     FOREIGN KEY (user_id) REFERENCES users(user_id) ON DELETE CASCADE,
     FOREIGN KEY (restaurant_id) REFERENCES restaurants(id) ON DELETE CASCADE,
-    FOREIGN KEY (delivery_agent_id) REFERENCES delivery_agents(id) ON DELETE SET NULL
+    FOREIGN KEY (agent_id) REFERENCES delivery_agents(id) ON DELETE SET NULL
 );
 
 CREATE TABLE IF NOT EXISTS order_items (
@@ -70,11 +70,12 @@ CREATE TABLE IF NOT EXISTS order_items (
 
 -- COMPONENT 05: PAYMENT & REVIEW MANAGEMENT
 CREATE TABLE IF NOT EXISTS payments (
-    id INT AUTO_INCREMENT PRIMARY KEY,
+    payment_id INT AUTO_INCREMENT PRIMARY KEY,
     order_id INT NOT NULL,
     amount DECIMAL(10, 2) NOT NULL,
     payment_method ENUM('CASH', 'ONLINE') NOT NULL,
-    status ENUM('PENDING', 'COMPLETED', 'FAILED') DEFAULT 'PENDING',
+    payment_status ENUM('PENDING', 'COMPLETED', 'FAILED') DEFAULT 'PENDING',
+    transaction_id VARCHAR(50),
     payment_date TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
     FOREIGN KEY (order_id) REFERENCES orders(order_id) ON DELETE CASCADE
 );

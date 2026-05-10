@@ -1,6 +1,7 @@
 package com.foodhub.model;
 
 public class AdminUser extends User {
+
     public AdminUser() {
         this.setRole("ADMIN");
     }
